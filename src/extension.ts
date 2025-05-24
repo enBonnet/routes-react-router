@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 }
 
-class RouteCodeLensProvider implements vscode.CodeLensProvider {
+export class RouteCodeLensProvider implements vscode.CodeLensProvider {
 	provideCodeLenses(document: vscode.TextDocument): vscode.CodeLens[] {
 		const lenses: vscode.CodeLens[] = [];
 
