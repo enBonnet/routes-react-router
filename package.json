@@ -1,14 +1,47 @@
 {
   "name": "routes-react-router",
   "displayName": "routes-react-router",
-  "description": "Easy way to visualize react-router 7 routes paths",
+  "description": "Easy way to visualize react-router routes paths",
   "version": "0.0.1",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.100.0"
   },
+  "maintainers": [
+		"Ender Bonnet <enbonnet@gmail.com>"
+	],
+  "contributors": [],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/enBonnet/routes-react-router.git"
+	},
+	"bugs": {
+		"url": "https://github.com/enBonnet/routes-react-router/issues"
+	},
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "vscode",
+    "extension",
+    "react-router",
+    "router",
+    "route",
+    "code lens",
+    "codelens",
+    "copy route",
+    "typescript",
+    "routes.ts",
+    "path helper",
+    "developer tools",
+    "frontend",
+    "web development",
+    "VSCode plugin",
+    "clipboard",
+    "routing",
+    "path annotation"
+  ],
+  "icon": "icon.png",
   "activationEvents": [
     "onLanguage:typescript"
   ],
