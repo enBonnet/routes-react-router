@@ -1,5 +1,12 @@
 import * as vscode from "vscode";
 
+const COPY_ROUTE_COMMAND = "routeAnnotator.copyRoutePath";
+
+vscode.commands.registerCommand(COPY_ROUTE_COMMAND, async (path: string) => {
+	await vscode.env.clipboard.writeText(path);
+	vscode.window.showInformationMessage(`Copied path: ${path}`);
+});
+
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.languages.registerCodeLensProvider(
@@ -38,8 +45,9 @@ class RouteCodeLensProvider implements vscode.CodeLensProvider {
 				lenses.push(
 					new vscode.CodeLens(new vscode.Range(i, 0, i, 0), {
 						title: `→ ${fullPath}`,
-						command: "",
-						tooltip: "Resolved path for route(...)"
+						command: COPY_ROUTE_COMMAND,
+						arguments: [fullPath],
+						tooltip: `Copy "${fullPath}" on click`
 					})
 				);
 			} else if (indexMatch) {
@@ -47,8 +55,9 @@ class RouteCodeLensProvider implements vscode.CodeLensProvider {
 				lenses.push(
 					new vscode.CodeLens(new vscode.Range(i, 0, i, 0), {
 						title: `→ ${fullPath}`,
-						command: "",
-						tooltip: "Resolved path for index(...)"
+						command: COPY_ROUTE_COMMAND,
+						arguments: [fullPath],
+						tooltip: `Copy "${fullPath}" on click`
 					})
 				);
 			} else if (prefixEndMatch) {
