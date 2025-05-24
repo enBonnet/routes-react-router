@@ -1,26 +1,61 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "routes-react-router" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('routes-react-router.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from routes-react-router!');
-	});
-
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(
+		vscode.languages.registerCodeLensProvider(
+			{ language: "typescript", scheme: "file", pattern: "**/routes.ts" },
+			new RouteCodeLensProvider()
+		)
+	);
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {}
+class RouteCodeLensProvider implements vscode.CodeLensProvider {
+	provideCodeLenses(document: vscode.TextDocument): vscode.CodeLens[] {
+		const lenses: vscode.CodeLens[] = [];
+
+		const lines = document.getText().split("\n");
+
+		const stack: string[] = [];
+
+		const prefixStart = /^\s*\.\.\.\s*prefix\("([^"]+)",\s*\[/;
+		const prefixEnd = /^\s*\]\),?/;
+
+		const routeLine = /^\s*route\("([^"]+)",/;
+		const indexLine = /^\s*index\(/;
+
+		for (let i = 0; i < lines.length; i++) {
+			const line = lines[i];
+
+			const prefixStartMatch = line.match(prefixStart);
+			const routeMatch = line.match(routeLine);
+			const indexMatch = line.match(indexLine);
+			const prefixEndMatch = line.match(prefixEnd);
+
+			if (prefixStartMatch) {
+				stack.push(prefixStartMatch[1]);
+			} else if (routeMatch) {
+				const fullPath = "/" + [...stack, routeMatch[1]].join("/");
+				lenses.push(
+					new vscode.CodeLens(new vscode.Range(i, 0, i, 0), {
+						title: `→ ${fullPath}`,
+						command: "",
+						tooltip: "Resolved path for route(...)"
+					})
+				);
+			} else if (indexMatch) {
+				const fullPath = "/" + stack.join("/");
+				lenses.push(
+					new vscode.CodeLens(new vscode.Range(i, 0, i, 0), {
+						title: `→ ${fullPath}`,
+						command: "",
+						tooltip: "Resolved path for index(...)"
+					})
+				);
+			} else if (prefixEndMatch) {
+				stack.pop();
+			}
+		}
+
+		return lenses;
+	}
+}

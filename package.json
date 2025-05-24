@@ -9,15 +9,11 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onLanguage:typescript"],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "routes-react-router.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "languages": [{ "id": "typescript", "extensions": [".ts"] }],
+    "codeLensProviders": [{ "language": "typescript", "pattern": "**/routes.ts" }]
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
