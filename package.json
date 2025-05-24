@@ -30,26 +30,21 @@
     ]
   },
   "scripts": {
+    "biome:format": "pnpm biome format --write src",
+    "biome:lint": "pnpm biome lint --write src",
+    "biome:check": "pnpm biome check --write src",
     "vscode:prepublish": "pnpm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "pnpm run compile && pnpm run lint",
-    "lint": "eslint src",
+    "pretest": "pnpm run compile && pnpm run biome:check",
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/glob": "^8.1.0",
-    "@types/mocha": "^10.0.10",
+    "@biomejs/biome": "1.9.4",
     "@types/node": "20.x",
-    "@types/vscode": "^1.100.0",
-    "@typescript-eslint/eslint-plugin": "^8.31.1",
-    "@typescript-eslint/parser": "^8.31.1",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.5.2",
-    "eslint": "^9.25.1",
-    "glob": "^11.0.2",
-    "mocha": "^11.5.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "@types/vscode": "1.100.0",
+    "@vscode/test-cli": "0.0.10",
+    "@vscode/test-electron": "2.5.2",
+    "typescript": "5.8.3"
   }
 }
