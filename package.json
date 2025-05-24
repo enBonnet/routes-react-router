@@ -3,10 +3,10 @@
   "displayName": "routes-react-router",
   "description": "Easy way to visualize react-router routes paths",
   "publisher": "enbonnet",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "engines": {
-    "vscode": "^1.100.0"
+    "vscode": "^1.80.0"
   },
   "maintainers": [
 		"Ender Bonnet <enbonnet@gmail.com>"
@@ -76,7 +76,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@types/node": "20.x",
-    "@types/vscode": "1.100.0",
+    "@types/vscode": "1.80.0",
     "@vscode/test-cli": "0.0.10",
     "@vscode/test-electron": "2.5.2",
     "typescript": "5.8.3"
