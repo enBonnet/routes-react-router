@@ -2,6 +2,7 @@
   "name": "routes-react-router",
   "displayName": "routes-react-router",
   "description": "Easy way to visualize react-router routes paths",
+  "publisher": "enbonnet",
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
