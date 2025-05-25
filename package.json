@@ -3,7 +3,7 @@
   "displayName": "routes-react-router",
   "description": "Easy way to visualize react-router routes paths",
   "publisher": "enbonnet",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "engines": {
     "vscode": "^1.80.0"

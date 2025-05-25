@@ -1,5 +1,11 @@
 # RRR - Routes-React-Router
 
+🔗 Links
+
+- [Open VSX](https://open-vsx.org/extension/enBonnet/routes-react-router)
+- [Marketplace](https://marketplace.visualstudio.com/items?itemName=enbonnet.routes-react-router)
+
+
 📍 Route Annotator for React Router
 Route Annotator is a VSCode extension that adds helpful annotations to your routes.ts files when working with react-router. It displays clickable CodeLens links above each route or index declaration, showing the full path derived from nested prefix() and route() structures.
 

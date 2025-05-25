@@ -4,6 +4,12 @@ All notable changes to the "routes-react-router" extension will be documented in
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.3] - 2025-05-24
+
+### Added
+
+- Links to marketplace on README.md
+
 ## [0.0.2] - 2025-05-24
 
 ### Added
